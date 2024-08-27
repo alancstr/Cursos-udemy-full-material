@@ -1,0 +1,238 @@
+# Python #
+
+------------------------------------------------------------------------------------------
+
+F1 T1
+
+# Numeros
++ Suma
+- Resta
+* Multiplicacion
+/ Division
+** Potencia
+% Modulo (regresa el sobrante de una division)
+
+# Variables (asignacion)
+n = 15
+
+# Textos
+Se representan dentro de comillas dobles o simples
+"Hola mundo"
+'Hola mundo'
+
+\'palabra\' Esto para marcar comillas dentro de un string
+
+tabulacion
+\t 
+
+salto de linea
+\n
+
+r"string"
+identifica que es crudo, sin tomar en cuenta los saltos de linea o tabulaciones
+
+
+print("""
+
+
+""")
+Sirve para imprimir tres lineas dentro de una cadena (lineas estipuladas por la cantidad de comillas dobles)
+
+Concatenacion
++
+cadena + cadena
+
+# Indices
+[#]
+Sirve para mostrar la posicion o letra ubicado en la posicion identificada (inicia con 0)
+
+-1 es el ultimo caracter en la cadena
+0 es el primer caracter en la cadena
+
+
+# Slicing
+[#:#]
+muestra tal posicion a tal posicion excluyendo el ultimo numero
+
+[#:]
+te muestra desde el indice seleccionado hasta el final
+
+[:#]
+te muestra desde el el inicio hasta el indice seleccionado
+
+[:]
+te muestra el total del dato o cadena
+
+palabra = "N" + palabra[1:]
+"Nython" con slicing de esta forma se puede sobreescribir una cadena
+
+len(palabra)
+muestra la cantidad de caracteres de la cadena
+
+Devuelve una cadena volteada
+[::-1]
+
+# Listas
+Es un conjunto de diferentes tipos de datos, los cuales puede aplicar el uso de slicing, concatenacion (+). 
+Ejemplo de asignación o reemplazo de dato en una lista
+lista[3] = nuevo dato
+
+Añadir un nuevo valor a la lista
+lista.append(nuevo dato)
+
+Las listas permiten añadir valores nuevos en base a calculos matematicos
+
+Reemplazo de valores con slicing
+lista[:3] = ['A','B','C']
+
+Saber el tamaño de nuestra lista
+len(lista)
+
+Ejemplo y representacion de una lista integrada de varias listas (3)
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+para acceder a un solo valor se podría representar de la siguiente manera
+lista[0][1] - accede al segundo valor de la primera lista
+lista[-1][-1] - accede al último valor de la última lista
+
+Devolver todos los elementos sumados de la lista
+sum(lista)
+
+
+# Entradas de valores
+Pueden ser guardadas en una variable como por ejemplo
+valor = input()
+asigna el valor de entrada por default cadena de caracteres a una variable
+
+Mensaje de usuario para input
+valor = input("Introduce un valor") - se agrega dentro de los parentesis como string
+
+Cambio de tipo de dato de entrada, por ejemplo a valor entero (numero)
+valor = int(valor)
+
+/ int() - entero
+/ float() - flotante (decimal)
+/ str() - strin o cadena de caracteres
+
+Esto se puede reducir a una sola línea de comando
+valor = float( input("Introduce un numero entero: ") )
+
+--------------------------------------------------------------------------------------------
+
+F1 T2
+
+# Operador y expresiones
+
+Operadores relacionales
+== igual que. Regresa Falso o Verdadero
+!= disinto de. 
+> Mayor que.
+< Menor que.
+>= Mayor o igual que.
+<= Menor o igual que.
+
+# Operadores logicos
+
+Not - negación
+And - (Y) unidad
+Or - (O) separa
+
+# Expresiones anidadas
+Debemos resolver las de cualquier tipo pero con prioridad
+1.- exponentes y raices
+2.- multiplicaciones y divisiones
+3.- sumas y restas
+4.- relacionales de izq a derecha
+5.- lógicos
+
+# Operadores en asignación
++= / operador de suma en asignacion
+-= / resta en asignación
+*= / producto en asignación
+/= / division en asignación
+%= / producto en asignación
+**= / potencia en asignación
+
+Esto sirve para realizar la operación matematica sobre la misma variable
+
+--------------------------------------------------------------------------------------------
+
+F1 T3
+
+# If
+Permite dividir el flujo de un programa en diferentes caminos
+
+if True:
+	bloque a ejecutar
+
+if a == 5 and b == 10:
+
+# else
+Se encadena a un if y se ejecuta cuando no se cumple la condicion del if
+
+if condicion:
+    bloque a ejecutar
+else:
+	bloque a ejecutar
+	
+# elif
+Sirve para añadir más condiciones if
+
+if condicion:
+	bloque a ejecutar
+elif condicion:
+	bloque a ejecutar
+elif condicion:
+	bloque a ejecutar
+else: 
+	bloque a ejecutar
+	
+Cuando se colocan muchos if en un bloque de codigo, puede que se ejecuten todos los if que cumplan la condicion, de lo contrario al utilizar elif, solo ejecuta la linea que se cumple y termina
+
+# Match case
+realiza el codigo dentro de una de las opciones dependiendo del patron, es como el switch case de los demas lenguajes
+
+match variable:
+	case patron1:
+		#codigo
+	case patron2:
+		#codigo
+	case _:
+		#codigo
+_ / se determina cuando no se cumple con ningun patron, y se usa un default
+
+
+# While
+Se basa en repetir un bloque a partir de evaluar una condición logica, mientras su valor sea True
+
+while condicion:
+	#codigo a ejecutar
+	if condicion:
+		break / continue
+else:
+	#codigo a ejecutar
+
+break / se puede usar cuando ya se cumple algun tipo de condicion y se requiere detener el bucle
+continue / se brinca el codigo a seguir y se va hasta la proxima condicion
+
+# For
+secuenciador que ejecuta n veces el codigo
+for n in numeros:
+	print(numero)
+
+imprime cada dato dentro de una lista
+
+# Enumerate
+Sirve para las listas, tomar el indice y el valor del indice, por ejemplo
+
+numeros = [1,2,3,4,5,6,7,8,9,10]
+for indice,numero in enumerate(numeros):
+    numeros[indice] *= 10
+numeros
+
+toma el indice y el numero de una lista, y se multiplica entre si
+
+# Range
+Determina un rango iniciando de cero
+range(10), es un rango que va de cero a 10
+se puede usar en for para identificar o definir cuantas veces iteracciona

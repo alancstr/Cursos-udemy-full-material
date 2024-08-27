@@ -1,0 +1,319 @@
+# Comandos iniciales de Git
+cd 'ruta'
+se ubica en la dirección o ruta que se especifica
+
+git init
+inicia y genera un repositorio local nuevo para trabajar
+
+git status
+da informacion sobre el repositorio que se esta trabajando
+
+git add (nombre del archivo)
+prepara los archivos, para después subirlos al stage (hacer commit) 
+
+git add . 
+toma todos los archivos con cambios y los prepara para subirlos al stage
+
+git reset (nombre de archivo)
+elimina o da retorno a un archivo individual del stage previo a commit
+
+git commit -m "mensaje de commit"
+sube los archivos con cambios al server, -m mensaje y entre comillas el comentario
+
+git checkout -- .
+descarta las modificaciones en los archivos y regresa a su estado original en main
+
+git log
+muestra el historial de commit y mensajes agregados
+
+git log --since=2.weeks
+lista todas las confirmaciones hechas durante las ultimas dos semanas
+
+git commit -am
+"a" es de añadir o add, entonces desde los cambios se puede subir el archivo sin necesitad de hacer git add
+
+git add *.html
+el asterisco indica que se subiran a stage todos los archivos con la extension .html; por ejemplo
+
+git add js/*.js
+se añaden los archivos con extension .js del folder js ("js/" indica el folder "*.js" indica la extension)
+
+git add css/
+sube a stage la carpeta completa "css" sin importar el tipo de archivo que tenga dentro del folder
+
+git status --short
+--short simplifica el mensaje de la consola
+
+git config --global alias.s "status --short"
+sirve para generar una alias y generar la info interesada con menos codigo, por ejemplo, alias.s el "s" es el nombre del alias y lo que se encuentra en comillas es el codigo 
+que nos queremos ahorrar en escribir
+
+git diff
+te muestra los cambios que hay en el repositorio o archivo de acuerdo a lo que existe en el stage
+
+git diff --staged
+compara tus cambios preparados con la ultima instantanea o commit confirmado
+
+git commit --amend -m "mensaje"
+actualiza el mensaje determinado del ultimo commit en caso de equivocarse o querer modificar
+
+git reset --soft HEAD^#
+te lleva al ultimo (revertir commit) cambio antes de hacer el ultimo commit o poner # e identificar a cual commit quieres regresar, y mantiene los cambios
+
+git commit --amend
+entra a una ventana para la modificación de info de commit
+
+git reset --soft #HASH
+tambien se puede colocar el numero de hash de los commits para regresar en el tiempo con los cambios modificados (normalmente se usa para revertir commits o historial)
+
+git reset --mixed #HASH
+funciona de la misma manera que el soft, solo que te identifica todos los cambios pendientes a ese punto sin descartarlos
+
+git reset --hard #HASH
+te regresa al commit al que quieres estar pero descartando y eliminando todos los cambios hasta ese punto
+
+git reflog
+te muestra todo el historial en orden cronologico (incluye reset, commits, etc), y con esto puedes copiar el hash y regresar a un punto que quieras con git reset --hard hash
+
+git mv archivoactual nuevoarchivo
+sustituye un archivo por otro en git en caso de que te hayas equivocado con el nombre o contenido (mv es de remover o move)
+
+git rm nombredearchivo
+remueve o borra el archivo que se encuentra en git, lo cual lo marca como delete y hay que hacer commit para ejecutar el cambio
+
+git reset --hard
+descarta los cambios y regresa a como estaba antes de modificar o hacer commit (funciona como git checkout -- .
+*cuando se renombra un archivo, pero no tiene cambios en su contenido, git lo identificara como el archivo original fue eliminado
+*pero hay un nuevo archivo sin tracking, entonces puedes dar un git add . y git lo identificará como R de rename en caso de que no haya cambiado su contenido
+
+Ignorando archivos (.gitignore)
+se crea un archivo en el repositorio de segimiento llamado .gitignore, en el cual se van agregar la extension o directorios de los archivos que no se quiere dar seguimiento
+(.html por ejemplo o dist/ para carpeta) este archivo tiene que darse seguimiento en git
+
+
+
+# Ramas:
+*version alternativa de tu repositorio master, se puede unir con la rama master una vez hecho cambios y confirmados
+-Merge: son uniones (fastfoward, cuando no se detectan cambios en la master y se hace en automativo. uniones automaticas, forma automatica son cambios diferentes entre ambos. manual, cuando git no lo puede hacer y es mas complicado por cambios que afectan las mismas lineas o cambios)
+
+git branch nombrederama
+crea la rama "nombrederama" que deseas
+
+git branch
+muestra sobre que rama estas trabajando
+
+git checkout rama
+posiciona en la rama en la cual quieres trabajar
+
+git merge nombrederama
+git merge se realiza sobre la mian o en la rama en la que quieres actualizar, seguida del nombre de la rama deseada a traer los cambios o datos
+
+git branch -d nombrerama
+borra la branch que desees en caso de ya no necesitarla
+
+git checkout -b nombrerama
+crea una rama y te posicionas en ella inmediatamente (-b de branch para su creacion)
+
+*Cuando tienes conflictos en el merge, por ejemplo que quieres hacer merge pero el archivo tiene dos modificaciones diferentes entre la master y la branch. Tienes que resolver los conflictos manualmente decidiendo con cual archivo quedarte y actualizarlo en la master localmente con los cambios. Despues tienes que resolver el conflicto con git commit, (si das git status te marca el archivo como UU)
+
+
+
+# Etiquetas (tag): son una referencia a un commit especifico en el tiempo
+
+git tag tagname
+se genera la etiqueta en la branch (se puede usar para cualquier branch) y se puede usar para regresar en el tiempo
+
+git tag -d tagname
+elimina el tag creado
+
+git tag -a (anotacion) V1.0.0 -m "Version 1.0.0 lista"
+un tag con anotacion, se usa para identificar una master muy madura
+
+git tag -a v0.1.0 #HASH -m "Version tal"
+agregas un tag a un hash o commit en la historia
+
+git show tag
+te muestra todo el historial y los cambios de un commit o movimiento con la identificacion del tag
+
+
+
+# Stash y Rebase:
+Stash; es una tipo boveda que puedes almacenar archivos que no has liberado o hecho commit y seguir trabajando con el repositorio actual o master. Asi mismo se puede observar el stash en git log, y cuando se hace pop, se borra del mapa
+Rebase; se usa normalmente para mover commits entre branches y master en el tiempo ya sea para colocarlas antes o despues de los commits en la master, esto sirve para las branch que tienen commits que no se han unido a la master
+
+## Stash
+
+git stash
+almacena los cambios o el trabajo que haz hecho temporalmente y revierte para trabajar en lo actual
+
+git stash list
+muestra las WIP o listas en la boveda
+
+git stash pop
+trae lo almacenado en la boveda a la rama actual y borra el stash (0) o index consecutivo
+
+git stash clear
+borra todos los stash sin preguntar o sin cargar
+
+-Los siguientes stash se manejan cuando se tienen mas de uno en boveda:
+
+git stash apply stash@{1}
+efectua el cambio del stash indicado
+
+git stash drop stash@{1}
+borra o elimina ese stash sin efectuar los cambios
+
+git stash show stash@{1}
+te muestra brevemente los cambios o modificaciones en dicho stash
+
+git stash save "leyenda"
+agrega una leyenda o etiqueta a los stash para identificar que cambios o modificaciones se le hicieron
+
+git stash list --stat
+muestra mas informacion de cada uno de los stashes que se tiene
+
+## Rebase
+Tienes que colocarte en la branch en la cual tienes que hacer los cambios, en este caso la que no sea master
+
+git rebase main
+es un ejemplo colocandose en una branch diferente a la main y quieren colocar los commits de la branch, después de los commits actuales de la main
+
+*Rebase iteractivo:
+git rebase -i HEAD~4
+es una forma de unir commits iterativamente, en caso de que dos commits sean lo mismo pero con diferente fecha o misma etiqueta, al momento de colocar squash en un comit, hace la union con uno anterior, este comando te lleva a una ventana de modificacion, en caso de hacer dos squash, une las ultimas 3 commits
+
+*Rebase reword;
+git rebase -i HEAD~4
+para entrar a la ventana, solo que se colocara r de reword en los commits que se requiera cambiar el nombre, y se cambiará uno por uno
+
+*Rebase edit;
+Se usa el ejemplo de, si en un commit se quiere editar y en ese se pudo haber hecho en dos commits diferentes, entras a la ventana de edicion, donde das git reset HEAD^, y ambos commits en ese tiempo se regresa, despues añades al stage uno por uno haciendo su respectivo commit, y después con un git status te das cuenta que estas en una ventana de git interactive rebase, para salir das un git rebase --continue, para ahora si regresar al tiempo a la master actualizada con dos commits en historial
+
+
+
+# Git Hub
+plataforma de desarrollo colaborativo de software para alojar proyectos
+- push: tomar nuestro repositorio y subirlo al servidor
+- pull: obtener los cambios desde el servidor
+
+git remote -v
+valida todos los remotos del repositorio
+
+git push
+subir los cambios y repositorio local a GitHub
+
+git push --tags
+sube a github los tags que no se ven reflejados al momento
+
+git pull
+trae a repositorio local lo que se encuentra en main desde GitHub
+
+git config --global pull.ff
+configura para que git haga pull como fostfoward y omitir el mensaje de aviso
+
+*Clonar repositorio:
+Con clone se trae todo el repositorio con los historiales y movimientos, tags, etc. y con descargas de zip, solo se trae el proyecto a como se encuentra actualmente
+
+git clone https:github..... 
+trae el repositorio del servidor o github
+
+git clone https://github.com/alancstr/libgit2 Mylocalrep 
+trae el repositorio del servidor o github a un repositorio nombrado localmente "Mylocalrep"
+
+*Git pull rebase: se usa cuando tienes conflictos localmente y en servidor con el mismo archivo y lineas modificadas o diferentes
+
+git config pull.rebase true
+configuracion por defecto en el repositorio local, añadir global para general
+
+-cuando marque error el git pull, utiliza:
+
+git rebase
+para poder hacer solucion de conflictos desde vsc o cualquier herramienta alterna
+
+Despues de solucionar conflictos, hay que añadir al stage y hacer commit para continuar trabajando en un arbol limpio (git commit -am "")
+Para terminar de resolver conlictos hay que hacer un:
+git rebase --continue / para salir de la forma interactiva del rebase
+Ahora si se puede hacer push al servidor despues de resolver conflictos
+
+git fetch
+descarga los cambios y referencias del repositorio remoto pero no los aplica al head local, sirve para visualizar los cambios antes de incorporarlos y ajustar
+
+
+
+# GitHub Básico
+
+
+
+# Git avanzado
+
+*Fork, clone y colaboraciones
+-Fork: para repositorios en la nube la cual no somos colaboradores, el fork sirve para tomar el repositorio original y clonarlo a un lugar con acceso y permisos de edicion y colaboracion
+
+Pull request: se quieren y recomiendan algunos cambios a las personas con control y acceso al repositorio, se notifica para su revision y que se tomen en cuenta
+
+git checkout HASH nombredearchivo
+esto sirve para hacer checkout a un archivo solamente y en un punto en especifico de commit, pero hay que añadir al stager localmente y hacer commit para hacer valido la accion
+
+git remote add upstream path 
+este comando sirve para añadir otro repositorio local a nuestro proyecto, esto es cuando no tenemos forma de edicion, y es hacer un tipo fork para trabajar localmente, add es para añadir un nuevo remote, upstream es el nombre del remoto y path es la dirección por ejemplo https://github.com/alancstr......
+
+git checkout -b rama 
+este comando sirve para crear una rama y en caso de que hayas hecho cambios no añadidos al stage y con commit, te los puedes traer directo y seguirlos trabajando ya en la rama sin modificar el original
+
+git push --set-upstream origin rama-villanos
+este comando sube o actualiza la rama rama-villanos al origin en GitHub
+
+git pull --all
+hace un pull a todo el proyecto
+
+git branch --all 
+te muestra todas las branches creadas y en proceso aun que no las vea GitHub
+
+git remote prune origin
+este comando limpia las ramas que se quedaron en el pasado o en historial y ya fueron borradas, y limpia las referencias
+
+
+
+# Issues
+Se pueden usar para comentar o preguntar dentro de un repositorio con los colaboradores
+en comentarios de los cambios o commit en GitHub se puede agregar el (#3) por ejemplo el issue numero 3 para hacer referencia, y en el mensaje del issue al cerrar se puede pegar el HASH, para hacer referencia al commit
+
+git commit -am Fixes #5: mensaje
+este tipo de commit, cierra un issue identificando la referencia "Fixes #5" como el issue número 5 en github, agregando el mensaje. En GitHub esto refleja el hash del commit en los comentarios del cierre de issue
+
+Existe un reporte en setting, issue (bug report, feature report etc), en donde ese reporte se puede asignar a un issue mediante el crear un nuevo issue, se verá el reporte disponible y se podrá añadir
+
+# Labels
+Se asignan etiquetas dentro de los issues para mayor informacion
+
+# Milestones
+Es un agrupador de issues de un proyecto
+Se usa para dar seguimiento a un conjunto de issues (agrupado) y evaluar su progreso, y se da un tiempo de cierre.
+
+Se puede agregar colaboradores desde GitHub en el apartado de Settings, Manage Access
+
+
+# Proyectos , Wikis y Git Pages
+# Wiki
+Es la forma de crear un pagina tipo estructura web en GitHub para el repositorio, agregando referencias entre si. Utiliza diferentes tipos de conotaciones
+
+# Proyectos
+Es un tipo de dashboard (spreedsheet) para darle seguimiento a las actividades dividido en tipo de tabla o en boar
+
+# GitHub pages
+Es una publicacion de tu aplicacion depende de la extension (.htlm, javascript, etc), se tiene que configurar la branch o el repositorio en  settings -> Pages, para que lo publique. Identificando la extension de tus /docs
+
+# Insights
+Muestra en grafica, historia del tiempo, cantidades de commits, usuarios y actividades, etc
+
+# Organizaciones y equipos
+Solo el dueño puede eliminar repositorios
+
+# Transferir repositorio local privado o publico a una organizacion
+Tienes que colocarte en el repositorio en GitHub que tu has creado, y darle en transferir, al seleccionar el usuario, seleccionaras la organizacion
+
+Se puede asignar permisos escritura, lectura, mantenimiento, admin etc, por equipo (TEAMS) al repositorio de la organizacion
+
+
+# Gist
+Es como un mini repositorio publico

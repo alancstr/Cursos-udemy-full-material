@@ -1,0 +1,58 @@
+C#  -  C Sharp
+
+Etapas
+
+1.- Toma de requisitos
+	Acciones a realizar por el requisitor y el programador
+	Lista de requisitos -> Documentación del producto -> Definición de la documentación por expertos -> Definición del proyecto para los programadores
+2.- Planificación
+	Se describen las plataformas, tecnologías
+	Tipo de aplicación
+	Arquitectura de software
+	Lenguaje de programación
+	Tecnologías
+	Número y habilidades del equipo
+	Plan de desarrollo
+	Otros
+3.- Implementación
+	Tareas definidas
+	Diseño
+	Arquitectura
+4.- Fase de pruebas
+	Peuqeños programadas automáticos
+	Corrección de errores
+	Balanceo entre la implementación y despliegue
+5.- Despliegue y explotación
+	Proceso más lento y caro
+	Desarrollo del instalador
+	Soporte para el despliegue
+	Formación a los empleados
+	Listo para su USO
+6.- Soporte técnico
+	Errores
+		-En el desarrollo
+		-Uso incorrecto
+		-Configuración defectuosa
+	Técnicos de soporte
+		-Trato directo con los desarrolladores
+		Formación específica en el software
+		Diversos especialistas
+7.- Docuentación técnica
+	Parte muy importante del proyecto de desarrollo
+	Creada por los desarrolladores y adapta para los formadores
+	Presente durante todo el proceso de desarrollo
+	
+Herramientas de desarrollo
+	.Net Framework
+		Windows Forms
+		ASP.Net
+		WPF
+		
+	.Net Core
+		UWP
+		ASP.NET Core
+	Xamarin
+		iOS
+		OS X
+		Android
+	.NET Standard Library
