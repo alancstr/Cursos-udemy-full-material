@@ -1,5 +1,6 @@
 C#  -  C Sharp
-
+------------------------------------------------
+#1 Introducción
 Etapas
 
 1.- Toma de requisitos
@@ -56,3 +57,273 @@ Herramientas de desarrollo
 		OS X
 		Android
 	.NET Standard Library
+	
+Estructura básica de una aplicación
+	Declaración de espacio de nombres
+	Método de clase
+	Atributos de clase
+	Método principal
+	Declaraciones, expresiones y comentarios
+
+------------------------------------------------
+
+#2 Sintaxis básica
+
+Variables:
+Almacenar información en memoria durante se ejecuta el codigo
+-Public: sin aceso restringido
+-Private: el acceso está limitado a la clase en la que esta la variable
+-Protected: acceso limitado a las clases o tipos derivados de la clase en la que está la variable
+
+Tipos de datos:
+Valor - Struct (númericos, bool, estructuras personalizadas), enum
+Referencia - class, interface, delegate, object, string, array
+
+Enum:
+Atributo con multiples valores (como una lista)
+
+enum situacion
+{
+	abierto,
+	facturado,
+	cancelado
+	}
+	
+Variables de referencia:
+Almacena la referencia que se le hace al objeto
+	-class, interface, delegate, object, string, array
+	
+Constantes:
+No se pueden modificar durante su ejecución
+Pueden ser de cualquier tipo básico
+Se tratan de igual manera que las variables
+
+- Enteros: Decimal o Hexadecimal
+- Punto flotante: Entero con punto decimal, parte fraccionaria y parte exponencial
+- Cadenas de caracteres: Suele estar cerrada entre comillas simple 'text'
+
+\n - nueva linea
+\t - tabulador
+
+Estructuras de condición
+-IF
+if (expresion boleana):
+	{
+		//codigo1
+	}
+elseif (expresion boleana 2):
+	{
+		//codigo2
+	}
+else:
+	{
+		//codigo3
+	}
+
+Operador ternario
+expresion boleana? codigo1: codigo2;
+	
+- Switch case
+Se ejecutara en comparacion de distintos variables
+
+
+Se coloca break para termiar el bucle, de lo contrario se ejecutara el resto de los casos
+switch (variable o valor)
+{
+	case valor1:
+		//codigo1
+	break;
+	
+	case valor2:
+		//codigo2
+	break;
+}
+
+
+Este tipo de codigo ejecuta el mismo codigo para distintos casos
+switch (variable o valor)
+{
+	case valor1:
+	case valor2:
+	case valor3:
+		//codigo1
+		break;
+		
+	case valor4:
+	case valor5:
+	case valor6:
+		//codigo2
+		break;
+}
+
+
+se ejecuta cuando no se cumple cualquier condición
+	default:
+		//codigo
+		break;
+
+- While
+Se ejecuta repetidas veces lo que se encuentre dentro del while si se cumple la condición
+
+while (condicion):
+	{
+		//codigo 
+	}
+	
+- do while
+
+do
+	{
+		//bloque de codigo
+	} while (condicion);
+	
+break: rompe el bucle y termian de ejecutar el while
+continue: salta el codigo que sigue y regresa al inicio del while
+
+- For
+for (inicializador;condicion;iterador)
+	{
+		bloque de codigo
+	}
+
+ejemplo: for (i=1;i<10;i++)
+
+- For each
+foreach (tipo de elemento in coleccion)
+	{
+		bloque de codigo
+	}
+
+
+- Arrays
+un array se declara:
+tipo[] nombreArray = new tipo[tamaño_array];
+
+ejemplo:
+int [] array = new int [10];
+
+Insersion de datos al array
+//cantidad de elementos explicita
+int[] array1 = new int[5] {1,3,5,7,12,8};
+
+//cantidad de elementos implicita
+int [] array2 = {1,3,2,7,6};
+
+asignacion de dato al array
+array1[i] = i+1;
+
+
+- Nulos
+Utiles para bases de datos
+Donde no se esperan valores tipados
+
+ejemplos:
+int? x = null;
+bool? y = null;
+double? z = null;
+
+int? x = null;
+
+(x.HasValue)
+devuelve false si es nulo, y true si tiene algun valor entero valido asignado
+
+(x.Value)
+devuelve el valor de la variable, si no hay variable, se manejan excepciones con catch
+
+(x.GetValueOrDefault();
+si tiene un valor nulo regresa cero, de lo contrario el valor asignado
+
+??
+Operador que asignara un valor a una variable en caso de que sea null
+k = j ?? 43; /asigna 43 si el valor de j es null
+
+- Strings
+System.string;
+string nombre = "Cadena de texto";
+
+Concatenación = +
+
+Substring:
+string variablenueva = variable.substring(10,8);
+Este comando .substring extrae 8 caracteres a partir de la posición número 10
+
+IndexOf:
+int inicio = variable.IndexOf("Palabra a buscar");
+Regresa el número o posición en la cual inicia la palabra a buscar
+
+variable.ToUpper();
+transforma la cadena de caracteres en mayusculas
+
+variable.ToLower();
+transforma la cadena de caracteres en minusculas
+
+variable.StartsWith("dato a buscar");
+Esta herramienta regresa un tipo logico, el cual se puede usar un if, se usa para confirmar si una variable empieza con cierto tipo de caracter en especifico
+
+variable.EndsWith("dato a buscar");
+Esta herramienta regresa un tipo logico, el cual se puede usar un if, se usa para confirmar si una variable termina con cierto tipo de caracter en especifico
+
+.TrimEnd();
+Sirve para quitar los espacios en blanco que hay al final de una cadena
+
+.TrimdStart();
+Sirve para quitar los espacios en blanco que hay al comienzo de una cadena
+
+.Trim();
+Eliminar todo los espacios en blanco al inicio y final de una cadena
+
+.PadLeft(10, 'X');
+Rellena en la cadena de texto hacía la izquierda con caracteres deseados y con una totalidad de caracteres
+La referencia muestra: llena con X hacia la izquera dando una totalidad de 10 caracter en conjunto a la cadena
+
+.PadRight(10, 'X');
+Rellena en la cadena de texto hacía la derecha con caracteres deseados y con una totalidad de caracteres
+La referencia muestra: llena con X hacia la derecha dando una totalidad de 10 caracter en conjunto a la cadena
+
+.Split(',');
+Split sirve para separar una cadena de texto o datos mediante un separador o caracter, conviertiendolo en una matriz o array
+En la referencia se usa como identificador la coma (,)
+string array[] = cadena.split(',');
+
+.Join(";", array/matriz);
+Join sirve para crear una cadena unica sobre un array o matriz, el primer dato es para crear el separador y el segundo es la referencia del array
+string cadena = string.Join(';',array)
+
+String.Format();
+Permite la creacion de una cadena basada en un patrón
+string formato = String.Format("Aqui voy a poner el {0} utilizando el metodo {1}. Esto es muy {2}", "parametro", ".Format", "util");
+Se define mediante {0}, con el numero del index, y al finalizar se separa la misma cantidad de parametros por comas
+
+.Replace();
+Se usa para sustituir una parte dentro de una cadena de texto que ya se encuentra definida
+string cadena = cadena.Replace("valorOriginal","valorNuevo");
+
+.Length();
+Devuelve la cantidad de caracteres que tiene una cadena de texto
+
+------------------------------------------------
+
+#3 Programación Orientada a Objetos
+-Abstracción
+	Enfocarse en los puntos mas importantes del sistema
+	1.Identidad unica (espacio de nombres)
+	2.Caracteristicas del objeto (propiedades / atributos)
+	3.Acciones a ejecutar (metodos/acciones)
+	
+-Encapsulamiento
+	Agregan seguridad a la aplicación, creando propuedades
+	1.Metodos e instancias privadas
+	2.Metodos e instancias publicas
+	3.Clase
+
+-Herencia
+	Automiza la produccion de los caracteres, resumiendo tiempo y esfuerzo en el codigo
+	Objeto1 - Objeto N - Object - Objeto Base
+
+-Polimorfismo
+	Capacidad que tiene un elemento para ausmir distintos comportamientos
+	Modificacion de la funciona interna de un objeto por medio del objeto padre
+	
+
+
+

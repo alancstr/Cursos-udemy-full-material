@@ -1,0 +1,15 @@
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\bin\Debug\net8.0\MiPrimeraAplicacionConsola.exe
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\bin\Debug\net8.0\MiPrimeraAplicacionConsola.deps.json
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\bin\Debug\net8.0\MiPrimeraAplicacionConsola.runtimeconfig.json
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\bin\Debug\net8.0\MiPrimeraAplicacionConsola.dll
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\bin\Debug\net8.0\MiPrimeraAplicacionConsola.pdb
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\obj\Debug\net8.0\MiPrimeraAplicacionConsola.GeneratedMSBuildEditorConfig.editorconfig
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\obj\Debug\net8.0\MiPrimeraAplicacionConsola.AssemblyInfoInputs.cache
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\obj\Debug\net8.0\MiPrimeraAplicacionConsola.AssemblyInfo.cs
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\obj\Debug\net8.0\MiPrimeraAplicacionConsola.csproj.CoreCompileInputs.cache
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\obj\Debug\net8.0\MiPrimeraAplicacionConsola.sourcelink.json
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\obj\Debug\net8.0\MiPrimeraAplicacionConsola.dll
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\obj\Debug\net8.0\refint\MiPrimeraAplicacionConsola.dll
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\obj\Debug\net8.0\MiPrimeraAplicacionConsola.pdb
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\obj\Debug\net8.0\MiPrimeraAplicacionConsola.genruntimeconfig.cache
+C:\Cursos\Cursos Udemy\C#\MiPrimeraAplicacionConsola\obj\Debug\net8.0\ref\MiPrimeraAplicacionConsola.dll
